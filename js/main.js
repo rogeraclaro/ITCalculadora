@@ -6,45 +6,45 @@ var festius2020 = ['2020-01-01', '2020-01-02', '2020-01-03', '2020-01-06', '2020
 var festius_totals = festius2018.concat(festius2019, festius2020);
 
 (function ompleAgosts() {
-  for (var inici2018 = 20180801; inici2018 <= 20180831; inici2018++) {
-    var data2018 = inici2018.toString();
-    var dataguions_primer2018 = data2018.slice(0, 4) + "-" + data2018.slice(4);
-    var dataguions_segon2018 = dataguions_primer2018.slice(0, 7) + "-" + dataguions_primer2018.slice(7);
-    festius_totals.push(dataguions_segon2018);
-  }
-  for (var inici2019 = 20190803; inici2019 <= 20190831; inici2019++) {
-    var data2019 = inici2019.toString();
-    var dataguions_primer2019 = data2019.slice(0, 4) + "-" + data2019.slice(4);
-    var dataguions_segon2019 = dataguions_primer2019.slice(0, 7) + "-" + dataguions_primer2019.slice(7);
-    festius_totals.push(dataguions_segon2019);
-  }
+    for (var inici2018 = 20180801; inici2018 <= 20180831; inici2018++) {
+        var data2018 = inici2018.toString();
+        var dataguions_primer2018 = data2018.slice(0, 4) + "-" + data2018.slice(4);
+        var dataguions_segon2018 = dataguions_primer2018.slice(0, 7) + "-" + dataguions_primer2018.slice(7);
+        festius_totals.push(dataguions_segon2018);
+    }
+    for (var inici2019 = 20190803; inici2019 <= 20190831; inici2019++) {
+        var data2019 = inici2019.toString();
+        var dataguions_primer2019 = data2019.slice(0, 4) + "-" + data2019.slice(4);
+        var dataguions_segon2019 = dataguions_primer2019.slice(0, 7) + "-" + dataguions_primer2019.slice(7);
+        festius_totals.push(dataguions_segon2019);
+    }
 })();
 
 if (el) {
-  el.addEventListener("click", function() {
-    var dia_inici = document.querySelector('#dia_inici').value;
-    var comprova = moment(dia_inici, 'DD/MM/YYYY', true).isValid();
-    if (comprova == true) {
+    el.addEventListener("click", function() {
+        var dia_inici = document.querySelector('#dia_inici').value;
+        var comprova = moment(dia_inici, 'DD/MM/YYYY', true).isValid();
+        if (comprova == true) {
 
-      var locales = moment.locales(); // ['en', 'ru', 'pl']
-      console.log(locales);
+            var locales = moment.locales(); // ['en', 'ru', 'pl']
+            console.log(locales);
 
-      var dia_inici_oficial = moment(dia_inici, 'DD/MM/YYYY');
-      var dia_final = moment(dia_inici, 'DD/MM/YYYY').addWorkdays(87, festius_totals).locale('ca').format('LL');
-      var dia_final_format = moment(dia_inici, 'DD/MM/YYYY').addWorkdays(87, festius_totals);
-      var dia_actual = moment().startOf('day');
-      var dia_stop = moment(dia_final_format, 'DD/MM/YYYY');
-      var dies_queden = moment().weekdayCalc(dia_actual, dia_stop, [1, 2, 3, 4, 5], festius_totals);
+            var dia_inici_oficial = moment(dia_inici, 'DD/MM/YYYY');
+            var dia_final = moment(dia_inici, 'DD/MM/YYYY').addWorkdays(87, festius_totals).locale('ca').format('LL');
+            var dia_final_format = moment(dia_inici, 'DD/MM/YYYY').addWorkdays(87, festius_totals);
+            var dia_actual = moment().startOf('day');
+            var dia_stop = moment(dia_final_format, 'DD/MM/YYYY');
+            var dies_queden = moment().weekdayCalc(dia_actual, dia_stop, [1, 2, 3, 4, 5], festius_totals);
 
-      if (dia_actual > dia_stop) {
-        resultat.innerHTML = 'Ep, que hi fas aquí? ;-)';
-      } else if (dia_actual < dia_inici_oficial) {
-        resultat.innerHTML = 'Encara no has començat,<br>però finalitzaràs el curs<br> el ' + dia_final;
-      } else {
-        resultat.innerHTML = 'Acabes el curs el dia ' + dia_final + '<br><br>Et queden ' + (dies_queden-1) + ' dies lectius (sense contar avui)';
-      }
-    } else {
-      resultat.innerHTML = 'Format de data incorrecte';
-    }
-  });
+            if (dia_actual > dia_stop) {
+                resultat.innerHTML = 'Ep, que hi fas aquí? ;-)';
+            } else if (dia_actual < dia_inici_oficial) {
+                resultat.innerHTML = 'Encara no has començat,<br>però finalitzaràs el curs<br> el ' + dia_final;
+            } else {
+                resultat.innerHTML = 'Acabes el curs el dia ' + dia_final + '<br>Et queden ' + (dies_queden - 1) + ' dies lectius (sense contar avui)';
+            }
+        } else {
+            resultat.innerHTML = 'Format de data incorrecte';
+        }
+    });
 }
