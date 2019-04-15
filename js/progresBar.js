@@ -18,7 +18,7 @@ function progressBarAnimation(daysLeft) {
       console.log(percentOfprogressDone);
 
       function frame(){
-          if(width > percentOfprogressDone){
+          if(width > percentOfprogressDone+1){
             clearInterval(id);
           } else {
             width++;

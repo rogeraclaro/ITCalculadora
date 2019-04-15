@@ -80,12 +80,13 @@
 #barBox {
   width: 100%;
   background-color: white;
+  color:black;
 }
 /* Progress bar line animation */
 #progresBar{
-  width:0.01%;
+  width:0.1%;
   height: 30px;
-  background-color: green;
+  background-color: #7fda00;
   text-align: center; /* To center it horizontally (if you want) */
   line-height: 30px; /* To center it vertically */
 }
