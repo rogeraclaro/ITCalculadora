@@ -6,13 +6,14 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 </head>
 <body>
     <div class="tot valign-wrapper">
-        <div class="subtot valign">
+       <div class="subtot valign">
             <div class="container">
                 <div class="header center"><img src="img/itlogo.png" /></div>
+                <p>Càlcula la data i els díes lectíus que et queden a IT Academy.</p>
                 <div class="row">
                     <div class="input-field col s12 m6 offset-m3">
                         <input id="dia_inici" type="text" value="">
@@ -25,18 +26,24 @@
                         <a id="calc" class="waves-effect waves-light btn-large">Calcula</a>
                     </div>
                 </div>
-                <div class="row center">
+                <div id="barBox" col s12">
+                    <div id="progresBar">0%</div>
+                </div>
+                <div class="row centv er">
                     <div class="resultat col s12"></div>
                     <div class="textillo col s12">Teniu el codi <a href="https://github.com/Rogeritacademy/rogeritacademy.github.io" target="_blank">aquí</a><br />Podeu clonar-lo, corregir-lo, millorar-lo o fer el que volgueu amb ell ;-)</div>
                 </div>
+
             </div>
         </div>
+        <!-- <button onclick="progressBarAnimation()">Progress Bar</button> -->
     </div>
-</body>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/moment-with-locales.js"></script>
-<script type="text/javascript" src="js/moment-weekday-calc.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-</html>
 
+  </body>
+  <script src="js/progresBar.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/moment-with-locales.js"></script>
+  <script src="js/moment-weekday-calc.js"></script>
+  <script src="js/materialize.min.js"></script>
+   </html>
 <!-- Este churrillo lo ha hecho Roger Masellas (http://masellas.info) -->

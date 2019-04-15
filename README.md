@@ -1,2 +1,2 @@
-# rogeritacademy.github.io
-Calculadora de dies lectius per a la IT Academy
+# diasLectiusTest
+dias lectius test ITacademy
