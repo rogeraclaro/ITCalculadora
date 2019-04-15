@@ -38,13 +38,13 @@ if (el) {
             console.log(dies_queden);
 
             if (dia_actual > dia_stop) {
-                resultat.innerHTML = 'Ep, que hi fas aquí? ;-)';
+                resultat.innerHTML = 'Ep, tu ja has acabat el curs ! enhorabona!!! ;-)';
             } else if (dia_actual < dia_inici_oficial) {
                 resultat.innerHTML = 'Encara no has començat,<br>però finalitzaràs el curs<br> el ' + dia_final;
             } else {
                 resultat.innerHTML = 'Acabes el curs el dia ' + dia_final + '<br>Et queden ' + (dies_queden - 1) + ' dies lectius (sense contar avui)';
-              progressBarAnimation(dies_queden); // load the progress bar animation
-          }
+                progressBarAnimation(dies_queden); // load the progress bar animation
+            }
         } else {
             resultat.innerHTML = 'Format de data incorrecte';
         }
