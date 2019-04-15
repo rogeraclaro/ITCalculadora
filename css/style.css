@@ -79,11 +79,11 @@
 /* Progress Bar dias lectius, used help documentation from w3cshools.com, javascript reference */
 #barBox {
   width: 100%;
-  background-color:grey;
+  background-color: white;
 }
 /* Progress bar line animation */
 #progresBar{
-  width:1%;
+  width:0.01%;
   height: 30px;
   background-color: green;
   text-align: center; /* To center it horizontally (if you want) */

@@ -35,6 +35,7 @@ if (el) {
             var dia_actual = moment().startOf('day');
             var dia_stop = moment(dia_final_format, 'DD/MM/YYYY');
             var dies_queden = moment().weekdayCalc(dia_actual, dia_stop, [1, 2, 3, 4, 5], festius_totals);
+            console.log(dies_queden);
 
             if (dia_actual > dia_stop) {
                 resultat.innerHTML = 'Ep, que hi fas aquí? ;-)';
@@ -42,7 +43,8 @@ if (el) {
                 resultat.innerHTML = 'Encara no has començat,<br>però finalitzaràs el curs<br> el ' + dia_final;
             } else {
                 resultat.innerHTML = 'Acabes el curs el dia ' + dia_final + '<br>Et queden ' + (dies_queden - 1) + ' dies lectius (sense contar avui)';
-            }
+              progressBarAnimation(dies_queden); // load the progress bar animation
+          }
         } else {
             resultat.innerHTML = 'Format de data incorrecte';
         }
