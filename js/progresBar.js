@@ -13,12 +13,12 @@ function progressBarAnimation(daysLeft) {
       var percentOfprogressDone = ( daysDone * 100) / 87;
 
 
-      console.log(daysLeft);
-      console.log(daysDone);
-      console.log(percentOfprogressDone);
+      console.log("daysLeft="+daysLeft);
+      console.log("days done = "+daysDone);
+      console.log("Perc of progress =  " + percentOfprogressDone);
 
       function frame(){
-          if(width > percentOfprogressDone+1){
+          if(width > percentOfprogressDone){
             clearInterval(id);
           } else {
             width++;
