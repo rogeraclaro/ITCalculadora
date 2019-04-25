@@ -8,14 +8,13 @@ function progressBarAnimation(daysLeft) {
       var barEl = document.getElementById("progresBar");
       var width = 1;
       var id = setInterval(frame, 40);
-
       var daysDone =  87 - daysLeft;
       var percentOfprogressDone = ( daysDone * 100) / 87;
 
 
-      console.log("daysLeft="+daysLeft);
-      console.log("days done = "+daysDone);
-      console.log("Perc of progress =  " + percentOfprogressDone);
+        console.log(percentOfprogressDone);
+        console.log(daysDone);
+        console.log(daysLeft);
 
       function frame(){
           if(width > percentOfprogressDone){
@@ -25,5 +24,21 @@ function progressBarAnimation(daysLeft) {
             barEl.style.width = width + "%";
             barEl.innerHTML= width * 1 +"%";
           }
+          // console.log("width = "+barEl.style.width);
+
       }
+
+
 }// end of animateBar
+//reset the progres bar if different calculations are done in the same session
+function resetBar(){
+  var barEl = document.getElementById("progresBar");
+  barEl.style.width = 0;
+  barEl.innerHTML= 0 +"%";
+}
+
+function setBarTo100(){
+  var barEl = document.getElementById("progresBar");
+  barEl.style.width = 100 +"%";
+  barEl.innerHTML= 100 +"%";
+}
