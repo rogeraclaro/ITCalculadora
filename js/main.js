@@ -28,7 +28,7 @@ if (el) {
         if (comprova == true) {
 
             var locales = moment.locales(); // ['en', 'ru', 'pl']
-            console.log(locales);
+            // console.log(locales);
 
             var dia_inici_oficial = moment(dia_inici, 'DD/MM/YYYY');
             var dia_final = moment(dia_inici, 'DD/MM/YYYY').addWorkdays(87, festius_totals).locale('ca').format('LL');
@@ -37,7 +37,7 @@ if (el) {
             var dia_stop = moment(dia_final_format, 'DD/MM/YYYY');
             var dies_queden = moment().weekdayCalc(dia_actual, dia_stop, [1, 2, 3, 4, 5], festius_totals);
 
-            console.log(dies_queden);
+            // console.log("dies_queden = " + dies_queden);
 
 
             if (dia_actual > dia_stop) {
