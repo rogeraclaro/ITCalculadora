@@ -80,10 +80,14 @@ var festius_totals = festius2018.concat(festius2019, festius2020);
 if (el) {
   el.addEventListener("click", function() {
     var dia_inici = document.querySelector("#dia_inici").value;
+    let altre_dia_final = document.querySelector("#altre_dia_final").value;
+    //todo
     var comprova = moment(dia_inici, "DD/MM/YYYY", true).isValid();
-    if (comprova == true) {
+    var comprova2 = moment(altre_dia_final, "DD/MM/YYYY", true).isValid();
+
+    if (comprova == true && comprova2 == true) {
       var locales = moment.locales(); // ['en', 'ru', 'pl']
-      // console.log(locales);
+      console.log("locales= " + locales);
 
       var dia_inici_oficial = moment(dia_inici, "DD/MM/YYYY");
       var dia_final = moment(dia_inici, "DD/MM/YYYY")
