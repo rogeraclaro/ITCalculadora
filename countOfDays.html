@@ -22,7 +22,7 @@
           <p>Càlcula els díes lectíus entre un peridode de temps.</p>
           <div class="row">
             <div class="input-field col s12 m6 offset-m3">
-              <input id="dia_inici" type="text" value="" />
+              <input id="dia_inici" type="text" value="11/03/2019" />
               <!--18/06/2018-->
               <label for="dia_inici">Data d'inici en format DD/MM/AAAA</label>
             </div>
@@ -30,10 +30,11 @@
           <div class="row">
             <!-- TODO  -->
             <div class="input-field col s12 m6 offset-m3">
-              <input id="altre_dia_final" type="text" value="" />
-              <label for="altre_dia_final"
+                <label for="altre_dia_final"
                 >Data de finalització en format DD/MM/AAAA</label
               >
+              <input id="altre_dia_final" type="text" value="22/07/2019" />
+              
             </div>
           </div>
           <div class="row">
@@ -63,10 +64,13 @@
       </div>
     </div>
   </body>
+  
   <script src="js/progresBar.js"></script>
   <script src="js/mainCountOfDays.js"></script>
   <script src="js/moment-with-locales.js"></script>
   <script src="js/moment-weekday-calc.js"></script>
   <script src="js/materialize.min.js"></script>
+  <script src="js/momentjs-business.js"></script>
+  
 </html>
 <!-- Este churrillo lo ha hecho Roger Masellas (http://masellas.info) -->

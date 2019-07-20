@@ -59,6 +59,7 @@ var festius2020 = [
   "2020-04-13"
 ];
 var festius_totals = festius2018.concat(festius2019, festius2020);
+//console.log(festius_totals);
 
 (function ompleAgosts() {
   for (var inici2018 = 20180801; inici2018 <= 20180831; inici2018++) {
@@ -79,57 +80,36 @@ var festius_totals = festius2018.concat(festius2019, festius2020);
 // el is the id=calc which is the button to trigger the calculations
 if (el) {
   el.addEventListener("click", function() {
+    resultat.innerHTML = "";
     var dia_inici = document.querySelector("#dia_inici").value;
-    let altre_dia_final = document.querySelector("#altre_dia_final").value;
+    var altre_dia_final = document.querySelector("#altre_dia_final").value;
+    //convert date format to US
+    dia_inici= moment(dia_inici, "DD-MM-YYYY").format('YYYY-MM-DD');
+    altre_dia_final = moment(altre_dia_final, "DD-MM-YYYY").format('YYYY-MM-DD');
+
     //todo
-    var comprova = moment(dia_inici, "DD/MM/YYYY", true).isValid();
-    var comprova2 = moment(altre_dia_final, "DD/MM/YYYY", true).isValid();
+    var start = moment(dia_inici, 'YYYY-MM-DD', true).isValid();
+    var end = moment(altre_dia_final, 'YYYY-MM-DD', true).isValid();
 
-    if (comprova == true && comprova2 == true) {
+    if (start == true && end == true) {
       var locales = moment.locales(); // ['en', 'ru', 'pl']
-      console.log("locales= " + locales);
+      // console.log("locales= " + locales);
 
-      var dia_inici_oficial = moment(dia_inici, "DD/MM/YYYY");
-      var dia_final = moment(dia_inici, "DD/MM/YYYY")
-        .addWorkdays(87, festius_totals)
-        .locale("ca")
-        .format("LL");
-      var dia_final_format = moment(dia_inici, "DD/MM/YYYY").addWorkdays(
-        87,
-        festius_totals
+      festius_totals.forEach(checkDay);
+
+      function checkDay(item, index){
+        var a = moment(item).isBetween(dia_inici, altre_dia_final  );
+        console.log("is between = "+a);  
+      }
+
+      var diff = moment(altre_dia_final).businessDiff(
+        moment(dia_inici)
       );
-      var dia_actual = moment().startOf("day");
-      var dia_stop = moment(dia_final_format, "DD/MM/YYYY");
-      var dies_queden = moment().weekdayCalc(
-        dia_actual,
-        dia_stop,
-        [1, 2, 3, 4, 5],
-        festius_totals
-      );
+      console.log("count of days=" + diff);
 
       // console.log("dies_queden = " + dies_queden);
-
-      if (dia_actual > dia_stop) {
-        setBarTo100();
-        resultat.innerHTML = "Ep, tu ja has acabat el curs ! enhorabona!!! ;-)";
-      } else if (dia_actual < dia_inici_oficial) {
-        resetBar();
-        resultat.innerHTML =
-          "Encara no has començat,<br>però finalitzaràs el curs<br> el " +
-          dia_final;
-      } else {
-        resetBar();
-        resultat.innerHTML =
-          "Acabes el curs el dia " +
-          dia_final +
-          "<br>Et queden " +
-          (dies_queden - 1) +
-          " dies lectius (sense contar avui)";
-        progressBarAnimation(dies_queden); // load the progress bar animation
-      }
     } else {
-      resetBar();
-      resultat.innerHTML = "Format de data incorrecte";
+      resultat.innerHTML = "Format de la data incorrecte";
     }
   });
 }

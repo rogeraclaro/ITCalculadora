@@ -80,6 +80,7 @@ var festius_totals = festius2018.concat(festius2019, festius2020);
 if (el) {
   el.addEventListener("click", function() {
     var dia_inici = document.querySelector("#dia_inici").value;
+    
     var comprova = moment(dia_inici, "DD/MM/YYYY", true).isValid();
     if (comprova == true) {
       var locales = moment.locales(); // ['en', 'ru', 'pl']
