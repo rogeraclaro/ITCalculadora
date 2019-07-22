@@ -1,5 +1,6 @@
 var el = document.querySelector("#calc");
 var resultat = document.querySelector(".resultat");
+var countHolDaysBetweenPeriod=0;
 var festius2018 = [
   "2018-05-21",
   "2018-06-01",
@@ -96,17 +97,22 @@ if (el) {
       // console.log("locales= " + locales);
 
       festius_totals.forEach(checkDay);
+   
 
       function checkDay(item, index){
-        var a = moment(item).isBetween(dia_inici, altre_dia_final  );
-        console.log("is between = "+a);  
+       
+        var holIsIn = moment(item).isBetween(dia_inici, altre_dia_final  );
+        console.log("Is between... = "+ holIsIn);       
+        holIsIn ? countHolDaysBetweenPeriod++ : false ; 
+      
       }
-
+      console.log("count hol="+ countHolDaysBetweenPeriod);
       var diff = moment(altre_dia_final).businessDiff(
         moment(dia_inici)
       );
-      console.log("count of days=" + diff);
-
+        var studyWorkingDays = diff - countHolDaysBetweenPeriod + 1;
+      
+        resultat.innerHTML = studyWorkingDays;
       // console.log("dies_queden = " + dies_queden);
     } else {
       resultat.innerHTML = "Format de la data incorrecte";
