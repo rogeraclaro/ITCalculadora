@@ -1,3 +1,3 @@
-# https://rogeraclaro.github.io/calculadora/
+# https://rogeraclaro.github.io/ITCalculadora/
 
 Calculadora de dies lectius per a la IT Academy
